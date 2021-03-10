@@ -1,48 +1,43 @@
 import "./App.css";
+import { useState } from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 export default function App() {
+  const [user, setUser] = useState({
+    name: "Kevin",
+    age: 23,
+  });
+
   return (
     <BrowserRouter>
-      <div>
+      <body>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
+          <Link to="/">Home</Link>
+          <Link to="/edit">Edit</Link>
         </nav>
 
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/" exact>
+            <Home user={user} />
           </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
+          <Route path="/edit" exact>
+            <Edit user={user} setUser={setUser} />
           </Route>
         </Switch>
-      </div>
+      </body>
     </BrowserRouter>
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
+function Home({ user }) {
+  return (
+    <div>
+      <div>Name: {user.name}</div>
+      <div>Age: {user.age}</div>
+    </div>
+  );
 }
 
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
+function Edit({ user, setUser }) {
+  return <div>Edit!!!</div>;
 }
