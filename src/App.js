@@ -10,26 +10,26 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <body>
-        <nav>
-          <Link to="/">Home</Link>
+      <div className="container">
+        <div className="nav">
+          <Link to="/">Profile</Link>
           <Link to="/edit">Edit</Link>
-        </nav>
+        </div>
 
         <Switch>
           <Route path="/" exact>
-            <Home user={user} />
+            <Profile user={user} setUser={setUser} />
           </Route>
           <Route path="/edit" exact>
             <Edit user={user} setUser={setUser} />
           </Route>
         </Switch>
-      </body>
+      </div>
     </BrowserRouter>
   );
 }
 
-function Home({ user }) {
+function Profile({ user, setUser }) {
   return (
     <div>
       <div>Name: {user.name}</div>
