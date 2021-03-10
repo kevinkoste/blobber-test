@@ -12,6 +12,7 @@ nav {
 
 div {
   display: flex;
+  flex-direction: column;
 }
 
 .App {
